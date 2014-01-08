@@ -1,0 +1,45 @@
+.ss-required-asterisk{
+	
+	color:#f49308
+	}
+	
+body {
+	background-color: #B3262A;
+}
+
+.topIcon{
+	text-align:center
+
+}
+
+.ss-q-long {
+resize: vertical;
+width: 70%;
+}
+
+.ss-q-short{
+	resize: vertical;
+width: 70%;
+	}
+
+.ss-secondary-text{
+	color:#f49308;
+	
+	}
+	
+.ss-q-title {
+display: block;
+font-weight: bold;
+}
+
+.required-message{
+	 color: transparent
+	
+	}
+	
+	
+.ss-form-container{
+	background-color:#B3262A;
+	margin:0.5em auto 0;
+	padding:1em;
+	width:45em}

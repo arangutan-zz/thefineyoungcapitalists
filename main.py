@@ -1,0 +1,198 @@
+#!/usr/bin/env python
+#
+# Copyright 2007 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+import os
+import urllib
+
+import jinja2
+import webapp2
+from google.appengine.ext import db
+from google.appengine.api import users
+import string
+import random
+
+
+
+
+JINJA_ENVIRONMENT = jinja2.Environment(
+                                       loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+                                       extensions=['jinja2.ext.autoescape'],
+                                       autoescape=True
+
+)
+
+#class BoardOfDirectors
+#    createDate = db.DateTimeProperty(auto_now_add = True)
+#    googleID = db.UserProperty()
+    
+
+
+#class InvestmentGroups
+#    createDate = db.DateTimeProperty(auto_now_add = True)
+#    name = db.StringProperty()
+#    website = db.StringProperty()
+#    moto = db.StringProperty()
+#    image = db.StringProperty()
+#    voteControl = db.BooleanProperty()
+#    profitControl = db.BooleanProperty()
+
+
+
+class Application(db.Model):
+    createDate = db.DateTimeProperty(auto_now_add = True)
+    tfycID = db.StringProperty()
+    claimed = db.BooleanProperty()
+    invest = db.IntegerProperty()
+    googleID = db.UserProperty()
+    
+
+class Investor(db.Model):
+    createDate = db.DateTimeProperty(auto_now_add = True)
+    googleID = db.UserProperty()
+    tfycID = db.StringProperty()
+    invest = db.IntegerProperty()
+    InvestmentGroups = db.IntegerProperty()
+
+def Application_key(a_key=None):
+    return db.Key.from_path('Application', a_key or 'default_key')
+
+def Investor_Key(a_key=None):
+    return db.Key.from_path('Investor', a_key or 'default_key')
+
+
+def id_generator(size=40, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
+
+def signInCheck():
+    return True
+
+#class CreateInvestorGroup(webapp2.RequestHandler):
+#    def get(self):
+
+
+class CreateID(webapp2.RequestHandler):
+    def get(self):
+       money = self.request.get('Money')
+       if (money==""):
+         self.response.out.write('Money')
+         return
+       money = int(money)
+       tfycID = id_generator()
+       saveData = Application(key=Application_key(tfycID))
+       saveData.tfycID = tfycID
+       saveData.claimed = False
+       saveData.invest = money
+       saveData.put()
+       self.response.out.write(tfycID)
+
+class RedeemID(webapp2.RequestHandler):
+    def get(self):
+        id = self.request.get('ID')
+        if (id==""):
+          self.response.out.write("No ID")
+          return
+        application = Application.get_by_key_name (id)
+        if (application==None):
+          self.response.out.write("Not Yet Setup")
+          return
+        if (application.claimed):
+          self.response.out.write("ID Already Used")
+          return
+        user = users.get_current_user()
+        if user:
+            application.claimed=True
+            application.googleID=user
+            invest = Investor(key=Investor_Key(user.user_id()))
+            invest.googleID=user
+            invest.tfycID = id
+            invest.invest = application.invest
+            invest.clan = 0
+            invest.put()
+            self.response.out.write("ID Assoicated with your Google Account")      
+        else:
+          url = '/RedeemID?ID=id' 
+          greeting = ('<a href="%s">Sign in or register</a>.' % users.create_login_url(url))
+          self.response.out.write("<html><body>%s</body></html>" % greeting)
+          
+class Profile(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user:
+          user = users.get_current_user()
+        else:
+          url = '/Profile' 
+          greeting = ('<a href="%s">Sign in or register</a>.' % users.create_login_url(url))
+          self.response.out.write("<html><body>%s</body></html>" % greeting)
+
+          
+        
+class MainHandler(webapp2.RequestHandler):
+    def get(self):       
+        template = JINJA_ENVIRONMENT.get_template('main.jinja')
+        self.response.out.write(template.render())
+        
+          
+
+class Youtube(webapp2.RequestHandler):
+    def get(self):       
+        self.response.out.write('''<meta http-equiv="refresh" content="0; url=http://www.youtube.com/channel/UChwoDCOjliin3x0Y_ShiGGw" />''')
+
+class rulesWIVG(webapp2.RequestHandler):
+    def get(self):       
+        self.response.out.write('''<meta http-equiv="refresh" content="0; url=http://www.youtube.com/channel/UChwoDCOjliin3x0Y_ShiGGw" />''')
+
+
+class FormHandler(webapp2.RequestHandler):
+    def get(self):       
+        template = JINJA_ENVIRONMENT.get_template('info.jinja')
+        self.response.out.write(template.render())
+
+class Login(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user:
+            greeting = ('Welcome, -%s-! (<a href="%s">sign out</a>)' %
+                        (user.user_id(), users.create_logout_url('/Login')))
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+                        users.create_login_url('/Login'))
+
+        self.response.out.write("<html><body>%s</body></html>" % greeting)
+
+
+class questionPeriodsWIVG(webapp2.RequestHandler):
+    def get(self):       
+        template = JINJA_ENVIRONMENT.get_template('eventList.jinja')
+        self.response.out.write(template.render())
+
+class submitWIVG(webapp2.RequestHandler):
+    def get(self):       
+        template = JINJA_ENVIRONMENT.get_template('submit.jinja')
+        self.response.out.write(template.render())
+
+
+
+app = webapp2.WSGIApplication([
+    ('/', MainHandler),
+    ('/Apply', FormHandler),
+    ('/CreateID', CreateID),
+    ('/RedeemID', RedeemID),
+    ('/Login', Login),
+    ('/Youtube', Youtube),
+    ('/questionPeriodsWIVG', questionPeriodsWIVG),
+    ('/rulesWIVG', rulesWIVG),
+	('/submitWIVG', submitWIVG)
+], debug=True)

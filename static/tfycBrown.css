@@ -1,0 +1,61 @@
+a:link, a:visited {
+	font-weight: normal;
+	color: #FF0000;
+	text-decoration: none;
+}
+
+
+
+
+
+
+.ss-required-asterisk{
+	
+	color:#f49308
+	}
+	
+body {
+	background-color: #952e1f;
+}
+
+
+.Terms{
+	color:#f49308;
+	
+	}
+
+.topIcon{
+	text-align:center
+
+}
+
+.ss-q-long {
+resize: vertical;
+width: 70%;
+}
+
+.ss-q-short{
+	resize: vertical;
+width: 70%;
+	}
+
+.ss-secondary-text{
+	color:#f49308;
+	}
+
+.ss-q-title {
+display: block;
+font-weight: bold;
+}
+
+.required-message{
+	 color: transparent
+	
+	}
+	
+	
+.ss-form-container{
+	background-color:#952e1f;
+	margin:0.5em auto 0;
+	padding:1em;
+	width:45em}
