@@ -1,0 +1,99 @@
+@import "reset.css";
+/*Variables*/
+.ss-required-asterisk {
+  color: #f49308;
+}
+body {
+  background: #B3262A;
+}
+.header {
+  background: url(patron-barra.png) repeat;
+  width: 100%;
+  height: 92px;
+  position: fixed;
+  z-index: 999;
+}
+.header .centrado {
+  width: 1000px;
+  margin: auto;
+}
+.header .centrado #face-btn {
+  background: url(botonera.png);
+  width: 55px;
+  height: 59px;
+  float: left;
+  margin: 10px 20px;
+  margin: 10px 20px 0px 380px;
+  background-position: 0px -69px;
+}
+.header .centrado #twt-btn {
+  background: url(botonera.png);
+  width: 55px;
+  height: 59px;
+  float: left;
+  margin: 10px 20px;
+  background-position: 0px -138px;
+}
+.header .centrado #youb-btn {
+  background: url(botonera.png);
+  width: 55px;
+  height: 59px;
+  float: left;
+  margin: 10px 20px;
+  background-position: 0px -345px;
+}
+.header .centrado #face-btn:hover {
+  background-position: 0px 0px;
+}
+.header .centrado #twt-btn:hover {
+  background-position: 0px -207px;
+}
+.header .centrado #youb-btn:hover {
+  background-position: 0px -276px;
+}
+.topIcon {
+  text-align: center;
+}
+.ss-q-long {
+  resize: vertical;
+  width: 70%;
+}
+.ss-q-short {
+  resize: vertical;
+  width: 70%;
+}
+.ss-secondary-text {
+  color: #f49308;
+}
+.ss-q-title {
+  display: block;
+  font-weight: bold;
+}
+.required-message {
+  color: transparent;
+}
+#contenedor1 {
+  width: 100%;
+  height: 800px;
+  z-index: 1;
+  background: #B3262A;
+}
+#contenedor1 .wrapper_centrado {
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 122px;
+}
+#contenedor1 #patron1 {
+  margin: 220px 0;
+  width: 100%;
+  height: 77px;
+  background: url(patron01.png) repeat;
+}
+#contenedor2 {
+  width: 100%;
+  height: 800px;
+  z-index: 1;
+  background: black;
+}
