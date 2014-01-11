@@ -165,8 +165,14 @@ class Youtube(webapp2.RequestHandler):
 
 class rulesWIVG(webapp2.RequestHandler):
     def get(self):       
-        self.response.out.write('''<meta http-equiv="refresh" content="0; url=http://www.youtube.com/channel/UChwoDCOjliin3x0Y_ShiGGw" />''')
+        self.response.out.write('''<meta http-equiv="refresh" content="0; url=https://docs.google.com/document/d/1YUbA6KMjBF3iRNklWHady_CzOADW4604Q1Ut1DHEdIw/edit?usp=sharing" />''')
 
+class faqWIVG(webapp2.RequestHandler):
+    def get(self):       
+        self.response.out.write('''<meta http-equiv="refresh" content="0; url=https://docs.google.com/document/d/1_JYfc6oAtvEB-yFPUQZBUiZzcAFOkT0PiVjPWkj7i4s/edit?usp=sharing" />''')
+		
+		
+		
 
 class FormHandler(webapp2.RequestHandler):
     def get(self):       
@@ -201,14 +207,15 @@ class submitWIVG(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/TestDisplay', TestDisplay),
-	('/FrontPage1', FrontPage1),
-	('/FrontPage2', FrontPage2),
+    ('/FrontPage1', FrontPage1),
+    ('/FrontPage2', FrontPage2),
     ('/Apply', FormHandler),
     ('/CreateID', CreateID),
     ('/RedeemID', RedeemID),
     ('/Login', Login),
     ('/Youtube', Youtube),
     ('/questionPeriodsWIVG', questionPeriodsWIVG),
+    ('/faqWIVG', faqWIVG),
     ('/rulesWIVG', rulesWIVG),
     ('/submitWIVG', submitWIVG)
 ], debug=True)
