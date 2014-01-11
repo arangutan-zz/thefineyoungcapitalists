@@ -44,6 +44,12 @@
 	<a href="/FrontPage1" target="_blank">
 		<div id="reddit"></div>
 	</a>
+
+	<a href="/FrontPage2" target="_blank">
+		<div id="podcast"></div>
+	</a>
+
+
 	
 </div>
 
@@ -224,7 +230,19 @@
 				},tiempo_animacion)
 			});
 
+			//left side
+
 			$('#reddit').mouseenter(function(){
+				$(this).animate({
+					left:'0'
+				},tiempo_animacion)
+			}).mouseleave(function(){
+				$(this).animate({
+					left:'-10px'
+				},tiempo_animacion)
+			});
+
+			$('#podcast').mouseenter(function(){
 				$(this).animate({
 					left:'0'
 				},tiempo_animacion)
