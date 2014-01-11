@@ -147,7 +147,17 @@ class MainHandler(webapp2.RequestHandler):
 class TestDisplay(webapp2.RequestHandler):
     def get(self):       
         template = JINJA_ENVIRONMENT.get_template('main.jinja')
-        self.response.out.write(template.render())          
+        self.response.out.write(template.render())       
+
+class FrontPage1(webapp2.RequestHandler):
+    def get(self):       
+        self.response.out.write("Page 1")  
+
+class FrontPage2(webapp2.RequestHandler):
+    def get(self):       
+        self.response.out.write("Page 1") 
+          
+
 
 class Youtube(webapp2.RequestHandler):
     def get(self):       
@@ -191,6 +201,8 @@ class submitWIVG(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/TestDisplay', TestDisplay),
+	('/FrontPage1', FrontPage1),
+	('/FrontPage2', FrontPage2),
     ('/Apply', FormHandler),
     ('/CreateID', CreateID),
     ('/RedeemID', RedeemID),
