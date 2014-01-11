@@ -141,10 +141,13 @@ class Profile(webapp2.RequestHandler):
         
 class MainHandler(webapp2.RequestHandler):
     def get(self):       
-        template = JINJA_ENVIRONMENT.get_template('main.jinja')
+        template = JINJA_ENVIRONMENT.get_template('holding.jinja')
         self.response.out.write(template.render())
         
-          
+class TestDisplay(webapp2.RequestHandler):
+    def get(self):       
+        template = JINJA_ENVIRONMENT.get_template('main.jinja')
+        self.response.out.write(template.render())          
 
 class Youtube(webapp2.RequestHandler):
     def get(self):       
@@ -187,6 +190,7 @@ class submitWIVG(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/TestDisplay', TestDisplay),
     ('/Apply', FormHandler),
     ('/CreateID', CreateID),
     ('/RedeemID', RedeemID),
@@ -194,5 +198,5 @@ app = webapp2.WSGIApplication([
     ('/Youtube', Youtube),
     ('/questionPeriodsWIVG', questionPeriodsWIVG),
     ('/rulesWIVG', rulesWIVG),
-	('/submitWIVG', submitWIVG)
+    ('/submitWIVG', submitWIVG)
 ], debug=True)
