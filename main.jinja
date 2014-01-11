@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>The Fine Young Capitalists</title>
 <link href="tfyc1.css" type="text/css" rel="stylesheet">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="countdown.js" type="text/javascript"></script>
 <link rel="icon" 
       type="image/png" 
@@ -26,6 +28,12 @@
 	</div>
 </div>
 
+<div id="botonera">
+	<div id="apply"></div>
+	<div id="faq"></div>
+	<div id="support"></div>
+</div>
+
 <div id="contenedor1">
 	<div class="wrapper_centrado">
 		<img src="logo-TFYC.png" width="530" height="500" alt="TFYC Logo" />
@@ -34,9 +42,118 @@
 </div>
 
 <div id="contenedor2">
+	<div class="wrapper_centrado">
+		<div class="wrapper_video">
+			<iframe style="margin:70px 0 0 0" width="675" height="455" src="//www.youtube.com/embed/gAjR4_CbPpQ" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<img src="estrellas.png"  alt="TFYC stars" />
+	</div>
+</div>
+
+<div id="contenedor3">
+	<div id="patron2"></div>
+	<div class="wrapper_centrado">
+		<img src="2011.png" alt="TFYC info about girls in videogames" />
+	</div>
+</div>
+
+
+
+
+<div id="contenedor5">
+	<div id="patron4rojo">
+	</div>
+	<div class="top_p">
+		<div class="wrapper_centrado">
+			<img src="thats.png">
+		</div>	
+	</div>	
+	<div class="wrapper_centrado">
+		<img src="320.png">
+		<img src="250.png">
+		<img src="16.png">
+		<p>
+			The business of games, is a big business, with real people <br>
+			doing real work, but certain people are being clearly under <br>
+			represented in key areas.
+		</p>
+	</div>
+</div>
+
+<div id="contenedor6">
+	<div class="wrapper_centrado">
+		<img src="women.png">
+		<br>
+		<br>
+		<br>
+		<h1>
+			THERE ARE MORE MOTHERS AND POTENTIAL <br>
+			MOTHERS PLAYING VIDEO GAMES THAN 18 YEARS <br>
+			OLDS THREATENING TO HAVE SEX WITH YOURS
+		</h1>
+		<br>
+		<br>
+		<br>
+		<br>
+		<h3>
+			If you take all the games sold in 2011 and rank <br>
+			them by sales, one out of the top fifty was <br>
+			directed/created by a woman. This is what we <br>
+			in the business wolrd refer to as an <br>
+			underutilized labour market.
+		</h3>
+		<br>
+		<br>
+		<br>
+		<h3>
+			This isn't about woman getting employed in <br>
+			video games; there are thousand of women <br>
+			already employed at all levels of the <br> 
+			industry. This is about giving exposure to an <br> 
+			underrepresented group as game creators. 
+		</h3>
+
+	</div>
+</div>
+
+<div id="contenedor4">
+
+	<div class="top_p">
+		<div class="wrapper_centrado">
+			The Fine Young Capitalists' mission is to create media <br>
+			using underrepresented labour, for unexplored <br>
+			demographics to fund non-profit organizations.
+			<br> <br>
+
+			<h3>
+				CREATING THE MEANS FOR THE PRODUCTION
+			</h3>
+		</div>
+	</div>	
+
+	<div class="wrapper_centrado">
+		<img src="how-works.png" alt="TFYC info about girls in videogames" />
+		<img src="01.png"> <br>
+		<img src="02.png"> <br>
+		<img src="03.png"> <br>
+		<img src="04.png"> <br>
+		<img src="05.png"> <br>
+		<img src="06.png"> 
+	</div>	
 	
 </div>
 
+<div id="footer">
+	<div id="patron5">
+	</div>
+	<div class="wrapper_centrado">
+		<img src="footer.png">
+		<p>
+			Media inquires can contact us at <a href="mailto:media@thefineyoungcapitalists.com">Media@thefineyoungcapitalists.com</a>
+		</p>
+	</div>
+
+</div>
 
 <div class="ss-form-container">
 	<div class="topIcon">
@@ -45,5 +162,58 @@
 
 </div>
 </body>
+<script type="text/javascript">
+	$(function(){
+		var pos,pos_abr;
+		var m_widget = true;
+		$(window).resize(function() {
+			
+			pos = ($(window).width() - $('#botonera').css('width').split('px')[0] )+'px';
+			$('#botonera').css('left',pos);
+
+		});
+		
+		var calcular = function(){
+			
+			pos = ($(window).width() - $('#botonera').css('width').split('px')[0] )+'px';
+			$('#botonera').css('left',pos);
+
+		}
+		
+		calcular();
+
+		$('#apply').mouseenter(function(){
+			$(this).animate({
+				left:'0'
+			},500)
+		}).mouseleave(function(){
+			$(this).animate({
+				left:'10px'
+			},500)
+		});
+		$('#faq').mouseenter(function(){
+			$(this).animate({
+				left:'0'
+			},500)
+		}).mouseleave(function(){
+			$(this).animate({
+				left:'10px'
+			},500)
+		});
+		$('#support').mouseenter(function(){
+			$(this).animate({
+				left:'0'
+			},500)
+		}).mouseleave(function(){
+			$(this).animate({
+				left:'10px'
+			},500)
+		});
+
+		botones();
+	});
+
+</script>
+
 </html>
 {% endautoescape %}

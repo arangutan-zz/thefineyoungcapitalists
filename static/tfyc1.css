@@ -1,55 +1,9 @@
 @import "reset.css";
 /*Variables*/
+/*Mixins*/
+/*Before elements*/
 .ss-required-asterisk {
   color: #f49308;
-}
-body {
-  background: #B3262A;
-}
-.header {
-  background: url(patron-barra.png) repeat;
-  width: 100%;
-  height: 92px;
-  position: fixed;
-  z-index: 999;
-}
-.header .centrado {
-  width: 1000px;
-  margin: auto;
-}
-.header .centrado #face-btn {
-  background: url(botonera.png);
-  width: 55px;
-  height: 59px;
-  float: left;
-  margin: 10px 20px;
-  margin: 10px 20px 0px 380px;
-  background-position: 0px -69px;
-}
-.header .centrado #twt-btn {
-  background: url(botonera.png);
-  width: 55px;
-  height: 59px;
-  float: left;
-  margin: 10px 20px;
-  background-position: 0px -138px;
-}
-.header .centrado #youb-btn {
-  background: url(botonera.png);
-  width: 55px;
-  height: 59px;
-  float: left;
-  margin: 10px 20px;
-  background-position: 0px -345px;
-}
-.header .centrado #face-btn:hover {
-  background-position: 0px 0px;
-}
-.header .centrado #twt-btn:hover {
-  background-position: 0px -207px;
-}
-.header .centrado #youb-btn:hover {
-  background-position: 0px -276px;
 }
 .topIcon {
   text-align: center;
@@ -72,6 +26,92 @@ body {
 .required-message {
   color: transparent;
 }
+/*New site*/
+body {
+  color: white;
+  font-family: 'Special Elite';
+  background: #B3262A;
+}
+.header {
+  /*background: url(patron-barra.png) repeat;*/
+
+  width: 100%;
+  height: 92px;
+  position: fixed;
+  z-index: 999;
+}
+.header .centrado {
+  width: 1000px;
+  margin: auto;
+}
+.header .centrado #face-btn {
+  background: url(botonera_blanco.png);
+  width: 55px;
+  height: 59px;
+  float: left;
+  margin: 10px 20px;
+  margin: 10px 20px 0px 380px;
+  background-position: 0px 0px;
+}
+.header .centrado #twt-btn {
+  background: url(botonera_blanco.png);
+  width: 55px;
+  height: 59px;
+  float: left;
+  margin: 10px 20px;
+  background-position: 0px -132px;
+}
+.header .centrado #youb-btn {
+  background: url(botonera_blanco.png);
+  width: 55px;
+  height: 59px;
+  float: left;
+  margin: 10px 20px;
+  background-position: 0px -264px;
+}
+.header .centrado #face-btn:hover {
+  background-position: 0px -66px;
+}
+.header .centrado #twt-btn:hover {
+  background-position: 0px -198px;
+}
+.header .centrado #youb-btn:hover {
+  background-position: 0px -330px;
+}
+#botonera {
+  width: 150px;
+  height: 320px;
+  position: fixed;
+  z-index: 999999;
+  top: 50px;
+}
+#botonera #apply {
+  width: 161px;
+  height: 95px;
+  background: url(apply.png) no-repeat center;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  left: 10px;
+}
+#botonera #faq {
+  width: 135px;
+  height: 87px;
+  background: url(faq.png) no-repeat center;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  left: 10px;
+}
+#botonera #support {
+  width: 119px;
+  height: 88px;
+  background: url(support.png) no-repeat center;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  left: 10px;
+}
 #contenedor1 {
   width: 100%;
   height: 800px;
@@ -93,7 +133,159 @@ body {
 }
 #contenedor2 {
   width: 100%;
-  height: 800px;
+  height: 700px;
   z-index: 1;
   background: black;
+}
+#contenedor2 .wrapper_centrado {
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+#contenedor2 .wrapper_video {
+  width: 900px;
+  height: 598px;
+  background: url(fondo-video.png) center no-repeat;
+  margin: auto;
+}
+#contenedor3 {
+  width: 100%;
+  height: 570px;
+  z-index: 1;
+  background: #f0961e;
+}
+#contenedor3 #patron2 {
+  width: 100%;
+  background: url(patron02.png);
+  height: 25px;
+}
+#contenedor3 .wrapper_centrado {
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 30px;
+}
+#contenedor4 {
+  width: 100%;
+  height: 1600px;
+  z-index: 1;
+  background: #b42828;
+}
+#contenedor4 .top_p {
+  width: 100%;
+  height: 164px;
+  z-index: 1;
+  background: url(patron03.png);
+  margin: 40px 0 0 0 ;
+}
+#contenedor4 .top_p .wrapper_centrado {
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+  font-size: 16pt;
+  line-height: 115%;
+  letter-spacing: 0px;
+  position: relative;
+  top: 27px;
+}
+#contenedor4 .top_p .wrapper_centrado h3 {
+  font-size: 18pt;
+  letter-spacing: 2px;
+}
+#contenedor4 .wrapper_centrado {
+  width: 1000px;
+  margin: auto;
+  height: 1000px;
+  margin: 120px auto 0 auto;
+  text-align: center;
+}
+#contenedor5 {
+  width: 100%;
+  height: 1050px;
+  z-index: 1;
+  background: #f0961e;
+}
+#contenedor5 #patron4rojo {
+  width: 100%;
+  height: 40px;
+  background: url(patron04.png);
+}
+#contenedor5 .top_p {
+  width: 100%;
+  height: 340px;
+}
+#contenedor5 .top_p .wrapper_centrado {
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+#contenedor5 .wrapper_centrado {
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+#contenedor5 .wrapper_centrado p {
+  margin: 80px 0 0 0;
+  font-size: 16pt;
+  line-height: 115%;
+  letter-spacing: 0px;
+}
+#contenedor6 {
+  width: 100%;
+  height: 1650px;
+  z-index: 1;
+  background: #b42828;
+  color: #f0961e;
+}
+#contenedor6 .wrapper_centrado {
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+#contenedor6 .wrapper_centrado h1 {
+  text-align: left;
+  font-size: 20pt;
+  line-height: 120%;
+  letter-spacing: 2px;
+  width: 700px;
+  margin: auto;
+}
+#contenedor6 .wrapper_centrado h3 {
+  text-align: left;
+  width: 400px;
+  margin: auto;
+  line-height: 120%;
+}
+#footer {
+  width: 100%;
+  height: 330px;
+  z-index: 1;
+  background: black;
+}
+#footer #patron5 {
+  width: 100%;
+  height: 29px;
+  background: url(patron05.png);
+}
+#footer .wrapper_centrado {
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+#footer .wrapper_centrado p {
+  color: #f0961e;
+  margin: 15px 0 0 0;
+}
+#footer .wrapper_centrado p a {
+  text-decoration: none;
+  color: #f0961e;
+}
+#footer .wrapper_centrado p a:hover {
+  text-decoration: none;
+  color: #b42828;
 }
