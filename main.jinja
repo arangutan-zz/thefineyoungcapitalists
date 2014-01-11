@@ -41,7 +41,10 @@
 </div>
 
 <div id="left-botonera">
-	<div id="reddit"></div>
+	<a href="/FrontPage1" target="_blank">
+		<div id="reddit"></div>
+	</a>
+	
 </div>
 
 <div id="contenedor1">
@@ -190,37 +193,53 @@
 
 		}
 		
-		calcular();
+		
+		var tiempo_animacion = 200;
+		var botones = function(){
+			$('#apply').mouseenter(function(){
+				$(this).animate({
+					left:'0'
+				},tiempo_animacion)
+			}).mouseleave(function(){
+				$(this).animate({
+					left:'10px'
+				},tiempo_animacion)
+			});
+			$('#faq').mouseenter(function(){
+				$(this).animate({
+					left:'0'
+				},tiempo_animacion)
+			}).mouseleave(function(){
+				$(this).animate({
+					left:'10px'
+				},tiempo_animacion)
+			});
+			$('#support').mouseenter(function(){
+				$(this).animate({
+					left:'0'
+				},tiempo_animacion)
+			}).mouseleave(function(){
+				$(this).animate({
+					left:'10px'
+				},tiempo_animacion)
+			});
 
-		$('#apply').mouseenter(function(){
-			$(this).animate({
-				left:'0'
-			},500)
-		}).mouseleave(function(){
-			$(this).animate({
-				left:'10px'
-			},500)
-		});
-		$('#faq').mouseenter(function(){
-			$(this).animate({
-				left:'0'
-			},500)
-		}).mouseleave(function(){
-			$(this).animate({
-				left:'10px'
-			},500)
-		});
-		$('#support').mouseenter(function(){
-			$(this).animate({
-				left:'0'
-			},500)
-		}).mouseleave(function(){
-			$(this).animate({
-				left:'10px'
-			},500)
-		});
+			$('#reddit').mouseenter(function(){
+				$(this).animate({
+					left:'0'
+				},tiempo_animacion)
+			}).mouseleave(function(){
+				$(this).animate({
+					left:'-10px'
+				},tiempo_animacion)
+			});
+
+
+
+		}
 
 		botones();
+		calcular();
 	});
 
 </script>
