@@ -45,7 +45,7 @@ body {
   margin: auto;
 }
 .header .centrado #face-btn {
-  background: url(botonera_blanco.png);
+  background: url(botonera2.png);
   width: 55px;
   height: 59px;
   float: left;
@@ -54,7 +54,7 @@ body {
   background-position: 0px 0px;
 }
 .header .centrado #twt-btn {
-  background: url(botonera_blanco.png);
+  background: url(botonera2.png);
   width: 55px;
   height: 59px;
   float: left;
@@ -62,7 +62,7 @@ body {
   background-position: 0px -132px;
 }
 .header .centrado #youb-btn {
-  background: url(botonera_blanco.png);
+  background: url(botonera2.png);
   width: 55px;
   height: 59px;
   float: left;
@@ -256,10 +256,15 @@ body {
 }
 #contenedor6 {
   width: 100%;
-  height: 1650px;
+  height: 1850px;
   z-index: 1;
   background: #b42828;
   color: #f0961e;
+}
+#contenedor6 .patron6 {
+  width: 100%;
+  height: 150px;
+  background: url(patron6.png) repeat;
 }
 #contenedor6 .wrapper_centrado {
   width: 1000px;
