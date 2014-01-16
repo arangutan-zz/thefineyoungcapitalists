@@ -8,6 +8,7 @@
 <link href="tfyc1.css" type="text/css" rel="stylesheet">
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="jquery.scrollTo-min.js"></script>
 <script src="countdown.js" type="text/javascript"></script>
 <link rel="icon" 
       type="image/png" 
@@ -19,6 +20,8 @@
 </head>
 	
 <body>
+
+
 
 <div class="header">
 	<div class="centrado">
@@ -41,11 +44,10 @@
 	<a href="https://docs.google.com/document/d/1_JYfc6oAtvEB-yFPUQZBUiZzcAFOkT0PiVjPWkj7i4s/edit?usp=sharing" target="_blank">
 		<div id="faq"></div>
 	</a>
-	<a href="https://www.indiegogo.com/projects/the-fine-young-capitalists" target="_blank">
+	
+	<a href="">
 		<div id="support"></div>
 	</a>
-	
-	
 	
 </div>
 
@@ -75,6 +77,10 @@
 			<iframe style="margin:70px 0 0 0" width="675" height="455" src="//www.youtube.com/embed/w1vTZ6wVBNU" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<img src="estrellas.png"  alt="TFYC stars" />
+		<div class="contenedor_support">
+			<iframe src="http://www.indiegogo.com/project/567386/widget/820683" width="224px" height="486px" frameborder=0 scrolling="no" style="position:relative;top:35px;left:-5px;"></iframe>
+		</div>	
+
 	</div>
 </div>
 
@@ -185,6 +191,8 @@
 
 </div>
 
+
+
 <div class="ss-form-container">
 	<div class="topIcon">
 		
@@ -239,7 +247,13 @@
 				$(this).animate({
 					left:'10px'
 				},tiempo_animacion)
+			}).on('click',function (e) {
+				e.preventDefault();
+				console.log("clickeo");
+				$.scrollTo('1450px', 800 );
 			});
+
+
 
 			//left side
 
