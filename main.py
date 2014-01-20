@@ -23,7 +23,9 @@ from google.appengine.ext import db
 from google.appengine.api import users
 import string
 import random
-
+import counter
+import security
+import idea
 
 
 
@@ -33,6 +35,47 @@ JINJA_ENVIRONMENT = jinja2.Environment(
                                        autoescape=True
 
 )
+
+
+class Investor(db.Model):
+    createDate = db.DateTimeProperty(auto_now_add = True)
+    investmentGroup = db.StringProperty()
+    loseFunds = db.FloatProperty()
+
+class Transaction(db.Model):
+    amount = db.FloatProperty
+    moneySync = db.StringProperty()
+    investmentGroup = db.StringProperty()
+    securityToken = db.StringProperty()
+
+class Project(db.Model):
+    name = db.StringProperty()
+    moneyNeeded = db.FloatProperty()
+    moneyRecieved = db.FloatProperty()
+
+class VoteType(db.Model):
+    name = db.StringProperty()
+    text = db.TextProperty()
+    value1C = db.IntegerProperty()
+    value1P = db.IntegerProperty()
+    value2C = db.IntegerProperty()
+    value2P = db.IntegerProperty()
+    value3C = db.IntegerProperty()
+    value3P = db.IntegerProperty()
+    value4C = db.IntegerProperty()
+    value4P = db.IntegerProperty()
+
+class Vote(db.Model):
+    value = db.IntegerProperty()
+    user = db.UserProperty()
+    capitalist = db.BooleanProperty()
+
+
+
+
+
+
+
 
 #class BoardOfDirectors
 #    createDate = db.DateTimeProperty(auto_now_add = True)
@@ -202,10 +245,14 @@ class submitWIVG(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('submit.jinja')
         self.response.out.write(template.render())
 
-
+class signout(webapp2.RequestHandler):
+    def get(self):
+        greeting = ('Go Away! (<a href="%s">sign out</a>)' %
+                    (users.create_logout_url('/Login')))
+        self.response.out.write("<html><body>%s</body></html>" % greeting)
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
+    ('/', TestDisplay),
     ('/TestDisplay', TestDisplay),
     ('/FrontPage1', FrontPage1),
     ('/FrontPage2', FrontPage2),
@@ -217,5 +264,10 @@ app = webapp2.WSGIApplication([
     ('/questionPeriodsWIVG', questionPeriodsWIVG),
     ('/faqWIVG', faqWIVG),
     ('/rulesWIVG', rulesWIVG),
-    ('/submitWIVG', submitWIVG)
+    ('/submitWIVG', submitWIVG),
+    ('/submitIdea', idea.submitIdea),
+    ('/viewIdea', idea.viewIdea),
+    ('/generateSecurity', security.generateCode),
+    ('/redeemSecurity', security.redeemCode),
+    ('/signout', signout)
 ], debug=True)

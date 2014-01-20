@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<body>
+<form action="/submitIdea" method="post">
+    <input value = "{{name}}" name = "name">
+    <input value = "{{tagline}}" name = "tagline">
+    <input value = "{{genres}}" name = "genres">
+    <input value = "{{describe}}" name = "describe">
+    <input value = "{{original}}" name = "original">
+    <input value = "{{look}}" name = "look">
+    <input value = "{{who}}" name = "who">
+    <input value = "{{email}}" name = "email">
+    <input value = "{{additionalInfo}}" name = "additionalInfo">
+    <input type = "submit" value ="switch">
+<br>
+<a href="/viewIdea?id={{past}}"> back </a>
+<a href="/viewIdea?id={{next}}"> forward </a>
+
+
+</form>
+
+
+
+
+
+<script src="https://apis.google.com/js/plusone.js">
+</script>
+<g:comments
+    href="window.location"
+    width="642"
+    first_party_property="BLOGGER"
+    view_type="FILTERED_POSTMOD">
+</g:comments>
+</body>
+</html>
+{% endautoescape %}
