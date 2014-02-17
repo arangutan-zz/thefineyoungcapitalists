@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
+<head>
+<script>
+window.history.pushState("object or string", "Title", "/viewIdea?id={{current}}");
+</script>
+</head>
+
+
 <body>
 <form action="/submitIdea" method="post">
     <input value = "{{name}}" name = "name">
@@ -26,12 +33,15 @@
 
 <script src="https://apis.google.com/js/plusone.js">
 </script>
-<g:comments
-    href="window.location"
-    width="642"
-    first_party_property="BLOGGER"
-    view_type="FILTERED_POSTMOD">
-</g:comments>
+
+<script>
+    if({{comment}}){
+        document.write('<g:comments href="http://www.thefineyoungcapitalists.com/viewIdea?id={{current}}" width="642" first_party_property="BLOGGER" view_type="FILTERED_POSTMOD"> </g:comments>');
+    }
+</script>
+
+
+
 </body>
 </html>
 {% endautoescape %}

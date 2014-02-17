@@ -51,9 +51,12 @@ class Idea_VideoGameW1(db.Model):
     email = db.StringProperty()
     additionalInfo = db.TextProperty()
     residenceStatus = db.TextProperty()
-    legal1 = db.TextProperty()
-    legal2 = db.TextProperty()
-    legal3 = db.TextProperty()
+    legal1 = db.BooleanProperty()
+    legal2 = db.BooleanProperty()
+    legal3 = db.BooleanProperty()
+    visible = db.BooleanProperty()
+    review = db.BooleanProperty()
+    comment = db.BooleanProperty()
 
 def Idea_VideoGameW1_key(a_key=None):
     return db.Key.from_path('Idea_VideoGameW1', a_key or 'default_key')
@@ -69,6 +72,7 @@ class submitIdea(webapp2.RequestHandler):
         user = users.get_current_user()
         if user:
             submission =  Idea_VideoGameW1.get(Idea_VideoGameW1_key(user.user_id()))
+            template = JINJA_ENVIRONMENT.get_template('ideaWIVG.jinja')
             if (submission==None):
                 counter.increment('IdeaWIVG1')
                 
@@ -77,17 +81,26 @@ class submitIdea(webapp2.RequestHandler):
                 quickGet = Idea_QuickGet(key=Idea_QuickGet_key(counter.get_count('IdeaWIVG1')))
                 quickGet.link = submission
                 quickGet.put()
-            template = JINJA_ENVIRONMENT.get_template('ideaWIVG.jinja')
+            
             a = ''
             b = ''
             c = ''
+            d = ''
+            e = ''
+            f = ''
             
-            if submission.legal1 == "Yes":
+            if submission.legal1:
                 a='checked'
-            if submission.legal1 == "Yes":
+            if submission.legal2:
                 b='checked'
-            if submission.legal1 == "Yes":
+            if submission.legal3:
                 c='checked'
+            if submission.review:
+                d='checked'
+            if submission.comment:
+                e='checked'
+            if submission.visible:
+                f='checked'
             template_values = {
             "name": submission.name,
             "tagline": submission.tagline,
@@ -101,10 +114,10 @@ class submitIdea(webapp2.RequestHandler):
             "residenceStatus": submission.residenceStatus,
             "legal1": a,
             "legal2": b,
-            "legal3": c
-    
-    
-    
+            "legal3": c,
+            "review": d,
+            "comment": e,
+            "showIt": f
             }
             
             
@@ -136,23 +149,53 @@ class submitIdea(webapp2.RequestHandler):
             submission.email=self.request.get('email')
             submission.additionalInfo=self.request.get('additionalInfo')
             
+            
             submission.residenceStatus=self.request.get('residenceStatus')
-            submission.legal1 =self.request.get('legal1')
-            submission.legal2 =self.request.get('legal2')
-            submission.legal3 =self.request.get('legal3')
+            submission.legal1=False;
+            submission.legal2=False;
+            submission.legal3=False;
+            submission.review = False;
+            submission.comment = False;
+            submission.visible = False;
+            
+            a = ''
+            b = ''
+            c = ''
+            d = ''
+            e = ''
+            f = ''
+          
+            
+            
+            
+            if self.request.get('legal1'):
+                submission.legal1 = True;
+                a = 'checked'
+            if self.request.get('legal2'):
+                b = 'checked'
+                submission.legal2 = True;
+            if self.request.get('legal3'):
+                c = 'checked'
+                submission.legal3 = True;
+            if self.request.get('review'):
+                d = 'checked'
+                submission.review = True;
+            if self.request.get('comment'):
+                e = 'checked'
+                submission.comment = True;
+            if self.request.get('showIt'):
+                f = 'checked'
+                submission.visible = True
+
+            
+            
+
             
             
             submission.put()
             template = JINJA_ENVIRONMENT.get_template('ideaWIVG.jinja')
-            a = ''
-            b = ''
-            c = ''
-            if submission.legal1 == "Yes":
-                a='checked'
-            if submission.legal2 == "Yes":
-                b='checked'
-            if submission.legal3 == "Yes":
-                c='checked'
+           
+
             template_values = {
             "name": submission.name,
             "tagline": submission.tagline,
@@ -166,7 +209,11 @@ class submitIdea(webapp2.RequestHandler):
             "residenceStatus": submission.residenceStatus,
             "legal1": a,
             "legal2": b,
-            "legal3": c
+            "legal3": c,
+            "review": d,
+            "comment": e,
+            "showIt": f
+
             }
             self.response.out.write(template.render(template_values))
 
@@ -176,11 +223,15 @@ class viewIdea(webapp2.RequestHandler):
         id = self.request.get('id')
         if id:
             id = int(id)
+            
             maxID= counter.get_count('IdeaWIVG1')
             quickLink =  Idea_QuickGet.get(Idea_QuickGet_key(id))
             while not quickLink and id < maxID:
                 id = id +1
                 quickLink =  Idea_QuickGet.get(Idea_QuickGet_key(id))
+                submission = quickLink.link
+                if submission.visible is False:
+                    quickLink=Null
             if id >=maxID+1:
                 id=1
                 quickLink =  Idea_QuickGet.get(Idea_QuickGet_key(id))
@@ -193,6 +244,10 @@ class viewIdea(webapp2.RequestHandler):
             if quickLink:
                 template = JINJA_ENVIRONMENT.get_template('viewIdeaWIVG.jinja')
                 submission = quickLink.link
+                comment = 'false'
+                if submission.comment:
+                    comment = 'true'
+                
                 template_values = {
                 "name": submission.name,
                 "tagline": submission.tagline,
@@ -205,12 +260,17 @@ class viewIdea(webapp2.RequestHandler):
                 "additionalInfo": submission.additionalInfo,
                 "next":next,
                 "past":past,
-                "current":id
+                "current":id,
+                "comment":comment
                 }
-                self.response.out.write(template.render(template_values))
+                if submission.visible is True:
+                    self.response.out.write(template.render(template_values))
+                else:
+                    self.response.out.write('Not Visible')
             else:
                 template = JINJA_ENVIRONMENT.get_template('404.jinja')
                 self.response.out.write(template.render())
+    
         
         
         
