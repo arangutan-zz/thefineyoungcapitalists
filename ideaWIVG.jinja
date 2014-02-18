@@ -3,34 +3,49 @@
 <html>
 <body>
 <form action="/submitIdea" method="post">
-    <input value = "{{name}}" name = "name"><br>
-    <input value = "{{tagline}}" name = "tagline"><br>
-    <input value = "{{genres}}" name = "genres"><br>
-    <input value = "{{describe}}" name = "describe"><br>
-    <input value = "{{original}}" name = "original"><br>
-    <input value = "{{look}}" name = "look"><br>
-    <input value = "{{who}}" name = "who"><br>
-    <input value = "{{email}}" name = "email"><br>
-    <input value = "{{additionalInfo}}" name = "additionalInfo"><br>
+    <input value = "{{name}}" name = "name">Name of the Game<br>
+    <input value = "{{tagline}}" name = "tagline">Tag Line For The Game<br>
+    <input value = "{{genres}}" name = "genres">Genres for the Game <br>
+    <input value = "{{describe}}" name = "describe">Describe the concept of your game and the target platform<br>
+    <input value = "{{original}}" name = "original">Describe what makes your game original in less then 4000 characters<br>
+    <input value = "{{look}}" name = "look">Describe what you imagine your game will look like in less then 4000 characters<br>
+    <input value = "{{who}}" name = "who">Describe who you are and why we should care in 4000 characters<br>
+    <input value = "{{email}}" name = "email">Please Provide an Email address so we can contact you<br>
+    <input value = "{{additionalInfo}}" name = "additionalInfo">Please provide any additional information for us to consider<br>
+    <br>
+    <br>
+    <input type="radio" name="residenceStatus" value="a">Canadian Common Law Resident outside Quebec<br>
+    <input type="radio" name="residenceStatus" value="b">Resident of the United States of America<br>
+    <input type="radio" name="residenceStatus" value="c">Resident of the EU<br>
+    <input type="radio" name="residenceStatus" value="d">Other<br>
+	<br>
+	<br>
     
-    
-    <input type="radio" name="residenceStatus" value="a">A<br>
-    <input type="radio" name="residenceStatus" value="b">B<br>
-    <input type="radio" name="residenceStatus" value="c">C<br>
-    <input type="radio" name="residenceStatus" value="d">D<br>
-    
-    <input type="checkbox" name="legal1" value="Yes" {{legal1}}>Legal 1<br>
-    <input type="checkbox" name="legal2" value="Yes" {{legal2}}>Legal 2<br>
-    <input type="checkbox" name="legal3" value="Yes" {{legal3}}>Legal 3<br>
+	
+	General Indemnity <br>
+	Participant hereby agree to indemnify, defend, and hold harmless TFYC in respect of any violation of any third party rights on account of participation in the Competition. Participant hereby agrees that:   <br>
+	
+    <input type="checkbox" name="legal1" value="Yes" {{legal1}}>Participant consents to having these terms and conditions provided only in the English language, <br>
+    <input type="checkbox" name="legal2" value="Yes" {{legal2}}>has read all part of these Terms and Conditions carefully, and obtained legal advice if Participant felt the need to understand these Terms and Conditions;<br>
+    <input type="checkbox" name="legal3" value="Yes" {{legal3}}>Acknowledges and agrees to these Terms and Conditions as part of her Participation in the Competition.<br>
+<br>
+<br>
+	<input type="checkbox" name="showIt" value="Yes" {{showIt}}>Visible to Everyone<br>
+	<input type="checkbox" name="review" value="Yes" {{review}}>Ready for Review<br>
+    <input type="checkbox" name="comment" value="Yes" {{comment}}>Display Comments <br>
 
-	<input type="checkbox" name="VisibleToEveryone" value="Yes" {{legal3}}>Visible to Everyone<br>
-	<input type="checkbox" name="ReadyForReview" value="Yes" {{legal3}}>Ready for Review<br>
-
-
+<br>
+<br>
     <input type = "submit" value ="switch">
 
 
 </form>
+
+
+
 </body>
+
+
+
 </html>
 {% endautoescape %}
