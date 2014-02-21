@@ -88,7 +88,7 @@ class submitIdea(webapp2.RequestHandler):
             d = ''
             e = ''
             f = ''
-            
+            z = False
             if submission.legal1:
                 a='checked'
             if submission.legal2:
@@ -117,7 +117,8 @@ class submitIdea(webapp2.RequestHandler):
             "legal3": c,
             "review": d,
             "comment": e,
-            "showIt": f
+            "showIt": f,
+            "justSaved":z 
             }
             
             
@@ -164,7 +165,7 @@ class submitIdea(webapp2.RequestHandler):
             d = ''
             e = ''
             f = ''
-          
+            z = True
             
             
             
@@ -212,7 +213,8 @@ class submitIdea(webapp2.RequestHandler):
             "legal3": c,
             "review": d,
             "comment": e,
-            "showIt": f
+            "showIt": f,
+            "justSaved":z 
 
             }
             self.response.out.write(template.render(template_values))
