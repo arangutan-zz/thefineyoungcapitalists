@@ -7,6 +7,7 @@ window.history.pushState("object or string", "Title", "/viewIdea?id={{current}}"
 </script>
     <link href="tfyc1.css" type="text/css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
 
@@ -41,6 +42,12 @@ window.history.pushState("object or string", "Title", "/viewIdea?id={{current}}"
             Title for the input<br>
             <input value = "{{additionalInfo}}" name = "additionalInfo" class="input"> <br>
             <br>
+
+
+            <div class="comentarios">
+
+            </div>
+
             <input type="submit" class="btn-submit" value="" >
         <br>
         <div class="botones">
@@ -48,6 +55,7 @@ window.history.pushState("object or string", "Title", "/viewIdea?id={{current}}"
             <a href="/viewIdea?id={{next}}"> forward </a>
         </div>
         
+
 
         </form>
         <div class="estrellas"></div>
@@ -63,8 +71,10 @@ window.history.pushState("object or string", "Title", "/viewIdea?id={{current}}"
 </script>
 
 <script>
+
     if({{comment}}){
-        document.write('<g:comments href="http://www.thefineyoungcapitalists.com/viewIdea?id={{current}}" width="642" first_party_property="BLOGGER" view_type="FILTERED_POSTMOD"> </g:comments>');
+        console.log("santiago");
+        $('.comentarios').html('<g:comments href="http://www.thefineyoungcapitalists.com/viewIdea?id={{current}}" width="930" first_party_property="BLOGGER" view_type="FILTERED_POSTMOD"> </g:comments>');
     }
 </script>
 

@@ -387,6 +387,9 @@ body {
   color: #f0961e;
   font-size: 19px;
 }
+#submit_idea .wrapper_centrado .comentarios {
+  margin: 30px 0 0 0;
+}
 a {
   color: #f0961e;
 }
