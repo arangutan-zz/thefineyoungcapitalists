@@ -1,54 +1,89 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
+<head>
+    <link href="tfyc1.css" type="text/css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+</head>
+
 <body>
-<form action="/submitIdea" method="post">
-    <input value = "{{name}}" name = "name">Name of the Game<br>
-    <input value = "{{tagline}}" name = "tagline">Tag Line For The Game<br>
-    <input value = "{{genres}}" name = "genres">Genres for the Game <br>
-    <input value = "{{describe}}" name = "describe">Describe the concept of your game and the target platform<br>
-    <input value = "{{original}}" name = "original">Describe what makes your game original in less then 4000 characters<br>
-    <input value = "{{look}}" name = "look">Describe what you imagine your game will look like in less then 4000 characters<br>
-    <input value = "{{who}}" name = "who">Describe who you are and why we should care in 4000 characters<br>
-    <input value = "{{email}}" name = "email">Please Provide an Email address so we can contact you<br>
-    <input value = "{{additionalInfo}}" name = "additionalInfo">Please provide any additional information for us to consider<br>
-    <br>
-    <br>
-    <input type="radio" name="residenceStatus" value="a">Canadian Common Law Resident outside Quebec<br>
-    <input type="radio" name="residenceStatus" value="b">Resident of the United States of America<br>
-    <input type="radio" name="residenceStatus" value="c">Resident of the EU<br>
-    <input type="radio" name="residenceStatus" value="d">Other<br>
-	<br>
-	<br>
-    
-	
-	General Indemnity <br>
-	Participant hereby agree to indemnify, defend, and hold harmless TFYC in respect of any violation of any third party rights on account of participation in the Competition. Participant hereby agrees that:   <br>
-	
-    <input type="checkbox" name="legal1" value="Yes" {{legal1}}>Participant consents to having these terms and conditions provided only in the English language, <br>
-    <input type="checkbox" name="legal2" value="Yes" {{legal2}}>has read all part of these Terms and Conditions carefully, and obtained legal advice if Participant felt the need to understand these Terms and Conditions;<br>
-    <input type="checkbox" name="legal3" value="Yes" {{legal3}}>Acknowledges and agrees to these Terms and Conditions as part of her Participation in the Competition.<br>
-<br>
-<br>
-	<input type="checkbox" name="showIt" value="Yes" {{showIt}}>Visible to Everyone<br>
-	<input type="checkbox" name="review" value="Yes" {{review}}>Ready for Review<br>
-    <input type="checkbox" name="comment" value="Yes" {{comment}}>Display Comments <br>
 
-<br>
-<br>
-    <input type = "submit" value ="switch">
+    <div id="submit_idea">
+        <div class="wrapper_centrado">
+            <div class="estrellas"></div>
+            <div class="titulo-form">
+                Title for the form
+            </div>
+            <form action="/submitIdea" method="post">
+                Name of the Game <br>
+                <input value = "{{name}}" name = "name" class="input"> <br> <br>
+                Tag Line For The Game <br>
+                <input value = "{{tagline}}" name = "tagline" class="input"><br> <br>
+                Genres for the Game <br>
+                <input value = "{{genres}}" name = "genres" class="input"><br><br>
+                Describe the concept of your game and the target platform <br>
+                <input value = "{{describe}}" name = "describe" class="input"><br><br>
+                Describe what makes your game original in less then 4000 characters <br>
+                <textarea name = "original" rows="5" cols="125" class="input">{{original}}</textarea>
+                Describe what you imagine your game will look like in less then 4000 characters <br>
+                <textarea name = "look" rows="5" cols="125" class="input">{{look}}</textarea>
+                Describe who you are and why we should care in 4000 characters <br>
+                <textarea name = "who" rows="5" cols="125" class="input">{{who}}</textarea> <br>
+                Please Provide an Email address so we can contact you <br>
+                <input value = "{{email}}" name = "email" class="input"><br><br>
+                Please provide any additional information for us to consider <br>
+                <textarea name = "additionalInfo" rows="5" cols="125" class="input">{{additionalInfo}}</textarea>
+                <br>
+                <br>
+                Resident Status <br>
+                <div class="radio">
+                    <input type="radio" name="residenceStatus" value="a">Canadian Common Law Resident outside Quebec<br>
+                    <input type="radio" name="residenceStatus" value="b">Resident of the United States of America<br>
+                    <input type="radio" name="residenceStatus" value="c">Resident of the EU<br>
+                    <input type="radio" name="residenceStatus" value="d">Other<br> 
+                </div>
+                <br>
+                <br>
+                
+                
+                General Indemnity <br>
+                <p class="descripcion">
+                   Participant hereby agree to indemnify, defend, and hold harmless TFYC in respect of any violation of any third party rights on account of participation in the Competition. Participant hereby agrees that: 
+                </p>
+                   <br>
+                <div class="radio">
+                    <input type="checkbox" name="legal1" value="Yes" {{legal1}}>Participant consents to having these terms and conditions provided only in the English language, <br>
+                    <input type="checkbox" name="legal2" value="Yes" {{legal2}}>Has read all part of these Terms and Conditions carefully, and obtained legal advice if Participant <br> <span style="margin:0 0 0 20px;"></span> felt the need to understand these Terms and Conditions;<br>
+                    <input type="checkbox" name="legal3" value="Yes" {{legal3}}>Acknowledges and agrees to these Terms and Conditions as part of her Participation in the 
+                    Competition.<br>
+                </div>
+            <br>
+            <br>
+            Title for this
+            <div class="radio">
+                <input type="checkbox" name="showIt" value="Yes" {{showIt}}>Visible to Everyone<br>
+                <input type="checkbox" name="review" value="Yes" {{review}}>Ready for Review<br>
+                <input type="checkbox" name="comment" value="Yes" {{comment}}>Display Comments <br>
+            </div>
+            <br>
+            <br>
+                <input type="submit" class="btn-submit" value="" >
+            </form>
+
+            <div class="estrellas"></div>
+            <br>
+
+        </div>
+    </div>
 
 
-</form>
 
 
-{{justSaved}}
-
-<script>
-    if({{justSaved}}){
-        alert("File Saved");
-    }
-</script>
+    <script>
+        if({{justSaved}}){
+            alert("The data was saved correctly");
+        }
+    </script>
 
 
 </body>

@@ -5,27 +5,55 @@
 <script>
 window.history.pushState("object or string", "Title", "/viewIdea?id={{current}}");
 </script>
+    <link href="tfyc1.css" type="text/css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
 </head>
 
 
+<head>
+
+
 <body>
-<form action="/submitIdea" method="post">
-    <input value = "{{name}}" name = "name">
-    <input value = "{{tagline}}" name = "tagline">
-    <input value = "{{genres}}" name = "genres">
-    <input value = "{{describe}}" name = "describe">
-    <input value = "{{original}}" name = "original">
-    <input value = "{{look}}" name = "look">
-    <input value = "{{who}}" name = "who">
-    <input value = "{{email}}" name = "email">
-    <input value = "{{additionalInfo}}" name = "additionalInfo">
-    <input type = "submit" value ="switch">
-<br>
-<a href="/viewIdea?id={{past}}"> back </a>
-<a href="/viewIdea?id={{next}}"> forward </a>
 
+<div id="submit_idea">
+    <div class="wrapper_centrado">
+        <div class="estrellas"></div>
+        <div class="titulo-form">
+            Idea {{current}}
+        </div>
+        <form action="/submitIdea" method="post">
+            Title for the input<br>
+            <input value = "{{name}}" name = "name" class="input margini"> <br>
+            Title for the input<br>
+            <input value = "{{tagline}}" name = "tagline" class="input margini"> <br>
+            Title for the input<br>
+            <input value = "{{genres}}" name = "genres" class="input margini"> <br>
+            Title for the input<br>
+            <input value = "{{describe}}" name = "describe" class="input margini"> <br>
+            Title for the input<br>
+            <textarea name = "original" rows="5" cols="125" class="input">{{original}}</textarea> <br>
+            Title for the input<br>
+            <textarea name = "look" rows="5" cols="125" class="input">{{look}}</textarea> <br>
+            Title for the input<br>
+            <textarea name = "who" rows="5" cols="125" class="input">{{who}}</textarea> <br>
+            Title for the input<br>
+            <input value = "{{email}}" name = "email" class="input margini"> <br>
+            Title for the input<br>
+            <input value = "{{additionalInfo}}" name = "additionalInfo" class="input"> <br>
+            <br>
+            <input type="submit" class="btn-submit" value="" >
+        <br>
+        <div class="botones">
+            <a href="/viewIdea?id={{past}}"> back </a> -
+            <a href="/viewIdea?id={{next}}"> forward </a>
+        </div>
+        
 
-</form>
+        </form>
+        <div class="estrellas"></div>
+    </div>
+
+</div>
 
 
 
