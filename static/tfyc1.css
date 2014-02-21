@@ -148,6 +148,14 @@ body {
   position: relative;
   top: 122px;
 }
+#contenedor1 p {
+  width: 50px;
+  margin: auto;
+  position: relative;
+  top: 180px;
+  text-align: center;
+  font-size: 12px;
+}
 #contenedor1 #patron1 {
   margin: 220px 0;
   width: 100%;
