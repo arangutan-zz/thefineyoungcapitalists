@@ -249,6 +249,17 @@ class Feminists(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('Feminists.jinja')
         self.response.out.write(template.render())
 
+class ConceptArt(webapp2.RequestHandler):
+    def get(self):       
+        template = JINJA_ENVIRONMENT.get_template('ConceptArt.jinja')
+        self.response.out.write(template.render())
+
+class Capitalism(webapp2.RequestHandler):
+    def get(self):       
+        template = JINJA_ENVIRONMENT.get_template('Capitalism.jinja')
+        self.response.out.write(template.render())
+
+
 class questionPeriodsWIVG(webapp2.RequestHandler):
     def get(self):       
         template = JINJA_ENVIRONMENT.get_template('eventList.jinja')
@@ -290,6 +301,8 @@ app = webapp2.WSGIApplication([
     ('/LoadJson',BallMagick.loadJson),
     ('/LoadBackground',BallMagick.loadBackGround),
     ('/Feminists',Feminists),
+    ('/ConceptArt', ConceptArt),
+    ('/Capitalism', Capitalism),
     #BitCoin
     #('/goechoemou2lewl17hoe5lu69eqoepi0thluqlakou5roaphi63rl5flegoeprl3',DogeCoinHandler.BitCoinReturn),
     #('/RedeemBitcoin',DogeCoinHandler.BitCoinID_HoldPage),
