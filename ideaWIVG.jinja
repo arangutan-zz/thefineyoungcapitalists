@@ -8,35 +8,46 @@
 
 <body>
 
+
     <div id="submit_idea">
-        <div class="wrapper_centrado">
+	    <div class="wrapper_centrado">
             <div class="estrellas"></div>
             <div class="titulo-form">
-                Title for the form
+                TFYC Submission Form
             </div>
             <form action="/submitIdea" method="post">
+			
+			Terms and Condition for the Contest are Available <a href="https://docs.google.com/document/d/1YUbA6KMjBF3iRNklWHady_CzOADW4604Q1Ut1DHEdIw">here.</a><br><br>
+			
+			Please Note Any Submission is assumed to be licensed under <a href="http://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International</a> and will be displayed as such.<br><br>
+			
+    
                 Name of the Game <br>
                 <input value = "{{name}}" name = "name" class="input"> <br> <br>
+                Your Name - This is be displayed so people can attribute the work to you  <br>
+                <input value = "{{namePerson}}" name = "namePerson" class="input"> <br> <br>
                 Tag Line For The Game <br>
                 <input value = "{{tagline}}" name = "tagline" class="input"><br> <br>
                 Genres for the Game <br>
                 <input value = "{{genres}}" name = "genres" class="input"><br><br>
                 Describe the concept of your game and the target platform <br>
-                <input value = "{{describe}}" name = "describe" class="input"><br><br>
+                <textarea name = "describe" rows="5" cols="125" class="input">{{describe}}</textarea><br><br>
                 Describe what makes your game original in less then 4000 characters <br>
                 <textarea name = "original" rows="5" cols="125" class="input">{{original}}</textarea>
                 Describe what you imagine your game will look like in less then 4000 characters <br>
                 <textarea name = "look" rows="5" cols="125" class="input">{{look}}</textarea>
-                Describe who you are and why we should care in 4000 characters <br>
+                Describe who you in less then 4000 characters - This will not be displayed and not considered for judging<br>
                 <textarea name = "who" rows="5" cols="125" class="input">{{who}}</textarea> <br>
-                Please Provide an Email address so we can contact you <br>
+                Please Provide an Email address so we can contact you - This will not be displayed to the Public<br>
                 <input value = "{{email}}" name = "email" class="input"><br><br>
-                Please provide any additional information for us to consider <br>
+                Please provide any additional information for us to consider - This will not be displayed to the Public <br>
                 <textarea name = "additionalInfo" rows="5" cols="125" class="input">{{additionalInfo}}</textarea>
                 <br>
                 <br>
+				
+				No further information will be displayed publically <br><br>
                 Resident Status <br>
-                <div class="radio">
+                <div class="radio" name = "residenceStatus">
                     <input type="radio" name="residenceStatus" value="a">Canadian Common Law Resident outside Quebec<br>
                     <input type="radio" name="residenceStatus" value="b">Resident of the United States of America<br>
                     <input type="radio" name="residenceStatus" value="c">Resident of the EU<br>
@@ -52,10 +63,12 @@
                 </p>
                    <br>
                 <div class="radio">
+                    <input type="checkbox" name="legal4" value="Yes" {{legal4}}>Participant has self identified as Woman before the date of March 4 2014<br>
                     <input type="checkbox" name="legal1" value="Yes" {{legal1}}>Participant consents to having these terms and conditions provided only in the English language, <br>
                     <input type="checkbox" name="legal2" value="Yes" {{legal2}}>Has read all part of these Terms and Conditions carefully, and obtained legal advice if Participant <br> <span style="margin:0 0 0 20px;"></span> felt the need to understand these Terms and Conditions;<br>
                     <input type="checkbox" name="legal3" value="Yes" {{legal3}}>Acknowledges and agrees to these Terms and Conditions as part of her Participation in the 
                     Competition.<br>
+
                 </div>
             <br>
             <br>

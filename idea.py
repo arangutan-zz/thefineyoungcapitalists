@@ -42,6 +42,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class Idea_VideoGameW1(db.Model):
     createDate = db.DateTimeProperty(auto_now_add = True)
     name = db.StringProperty()
+    namePerson = db.StringProperty()
     tagline = db.StringProperty()
     genres = db.StringProperty()
     describe = db.TextProperty()
@@ -54,6 +55,7 @@ class Idea_VideoGameW1(db.Model):
     legal1 = db.BooleanProperty()
     legal2 = db.BooleanProperty()
     legal3 = db.BooleanProperty()
+    legal4 = db.BooleanProperty()
     visible = db.BooleanProperty()
     review = db.BooleanProperty()
     comment = db.BooleanProperty()
@@ -81,7 +83,7 @@ class submitIdea(webapp2.RequestHandler):
                 quickGet = Idea_QuickGet(key=Idea_QuickGet_key(counter.get_count('IdeaWIVG1')))
                 quickGet.link = submission
                 quickGet.put()
-            
+           
             a = ''
             b = ''
             c = ''
@@ -89,6 +91,7 @@ class submitIdea(webapp2.RequestHandler):
             e = ''
             f = ''
             z = False
+            y = False
             if submission.legal1:
                 a='checked'
             if submission.legal2:
@@ -101,8 +104,11 @@ class submitIdea(webapp2.RequestHandler):
                 e='checked'
             if submission.visible:
                 f='checked'
+            if submission.visible:
+                y='checked'
             template_values = {
             "name": submission.name,
+            "namePerson":submission.namePerson,
             "tagline": submission.tagline,
             "genres": submission.genres,
             "describe": submission.describe,
@@ -116,9 +122,11 @@ class submitIdea(webapp2.RequestHandler):
             "legal2": b,
             "legal3": c,
             "review": d,
+            "legal4": y,
             "comment": e,
             "showIt": f,
-            "justSaved":z 
+            "justSaved":z,
+            
             }
             
             
@@ -141,20 +149,20 @@ class submitIdea(webapp2.RequestHandler):
             submission.name=self.request.get('name')
             submission.tagline=self.request.get('tagline')
             submission.genres=self.request.get('genres')
-            
             submission.describe=self.request.get('describe')
             submission.original=self.request.get('original')
             submission.look=self.request.get('look')
-            
+            submission.namePerson=self.request.get('namePerson')
             submission.who=self.request.get('who')
             submission.email=self.request.get('email')
             submission.additionalInfo=self.request.get('additionalInfo')
-            
+           
             
             submission.residenceStatus=self.request.get('residenceStatus')
             submission.legal1=False;
             submission.legal2=False;
             submission.legal3=False;
+            submission.legal4=False;
             submission.review = False;
             submission.comment = False;
             submission.visible = False;
@@ -165,6 +173,7 @@ class submitIdea(webapp2.RequestHandler):
             d = ''
             e = ''
             f = ''
+            y = ''
             z = True
             
             
@@ -187,6 +196,9 @@ class submitIdea(webapp2.RequestHandler):
             if self.request.get('showIt'):
                 f = 'checked'
                 submission.visible = True
+            if self.request.get('legal4'):
+                y = 'checked'
+                submission.visible = True
 
             
             
@@ -199,6 +211,7 @@ class submitIdea(webapp2.RequestHandler):
 
             template_values = {
             "name": submission.name,
+            "namePerson":submission.namePerson,
             "tagline": submission.tagline,
             "genres": submission.genres,
             "describe": submission.describe,
@@ -212,9 +225,10 @@ class submitIdea(webapp2.RequestHandler):
             "legal2": b,
             "legal3": c,
             "review": d,
+            "legal4": y,
             "comment": e,
             "showIt": f,
-            "justSaved":z 
+            "justSaved":z,
 
             }
             self.response.out.write(template.render(template_values))
