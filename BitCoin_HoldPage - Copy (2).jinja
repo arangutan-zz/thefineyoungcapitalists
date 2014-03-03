@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The Fine Young Capitalists</title>
+<link href="tfyc1.css" type="text/css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link rel="icon" 
+      type="image/png" 
+      href="http://www.thefineyoungcapitalists.com/Icon.png">
+
+
+<link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+<div id="contenedor1">
+	<div class="wrapper_centrado">
+<img src="logo-TFYC.png" width="530" height="500" alt="TFYC Logo" /> <br> <br>
+Hello {{Name}} <br> <br>
+
+This will link a Instance of Bitcoins {{BTC}} or {{Price}} {{TypeOfMoney}} to your Google Account. <br><br>
+
+This linking is irrevocable and your email address will not be retained. Please retain this code <br><br>{{ID}}<br><br> if you need support <br><br>
+
+<a href=/BitCoinAuth?id={{ID}}> Link the BitCoin to this account</a> <br><br>
+
+If this is not the account you would like to link the Bitcoins to please follow this link 
+
+<a href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://www.thefineyoungcapitalists.com/RedeemBitcoin?id={{ID}}">Log Out and Log Back In</a>
+</div> 
+</div>
+</body>
+{% endautoescape %}

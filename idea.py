@@ -235,7 +235,7 @@ class viewIdea(webapp2.RequestHandler):
                 if (quickLink):
                     submission = quickLink.link
                     if submission.visible is False:
-                        quickLink=Null
+                        quickLink=0
             if id >=maxID+1:
                 id=1
                 quickLink =  Idea_QuickGet.get(Idea_QuickGet_key(id))

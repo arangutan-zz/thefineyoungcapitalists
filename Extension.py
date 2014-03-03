@@ -21,14 +21,9 @@ import jinja2
 import webapp2
 from google.appengine.ext import db
 from google.appengine.api import users
-
 import string
 import random
-import counter
-import security
-import idea
-import DogeCoinHandler
-import BallMagick
+
 
 
 
@@ -38,47 +33,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
                                        autoescape=True
 
 )
-
-
-class Investor(db.Model):
-    createDate = db.DateTimeProperty(auto_now_add = True)
-    investmentGroup = db.StringProperty()
-    loseFunds = db.FloatProperty()
-
-class Transaction(db.Model):
-    amount = db.FloatProperty
-    moneySync = db.StringProperty()
-    investmentGroup = db.StringProperty()
-    securityToken = db.StringProperty()
-
-class Project(db.Model):
-    name = db.StringProperty()
-    moneyNeeded = db.FloatProperty()
-    moneyRecieved = db.FloatProperty()
-
-class VoteType(db.Model):
-    name = db.StringProperty()
-    text = db.TextProperty()
-    value1C = db.IntegerProperty()
-    value1P = db.IntegerProperty()
-    value2C = db.IntegerProperty()
-    value2P = db.IntegerProperty()
-    value3C = db.IntegerProperty()
-    value3P = db.IntegerProperty()
-    value4C = db.IntegerProperty()
-    value4P = db.IntegerProperty()
-
-class Vote(db.Model):
-    value = db.IntegerProperty()
-    user = db.UserProperty()
-    capitalist = db.BooleanProperty()
-
-
-
-
-
-
-
 
 #class BoardOfDirectors
 #    createDate = db.DateTimeProperty(auto_now_add = True)
@@ -201,13 +155,7 @@ class FrontPage1(webapp2.RequestHandler):
 
 class FrontPage2(webapp2.RequestHandler):
     def get(self):       
-        self.response.out.write("Page 1")
-
-
-class dogeWIVG(webapp2.RequestHandler):
-    def get(self):
-        template = JINJA_ENVIRONMENT.get_template('DogeCoin.jinja')
-        self.response.out.write(template.render())
+        self.response.out.write("Page 1") 
           
 
 
@@ -244,11 +192,6 @@ class Login(webapp2.RequestHandler):
         self.response.out.write("<html><body>%s</body></html>" % greeting)
 
 
-class Feminists(webapp2.RequestHandler):
-    def get(self):       
-        template = JINJA_ENVIRONMENT.get_template('Feminists.jinja')
-        self.response.out.write(template.render())
-
 class questionPeriodsWIVG(webapp2.RequestHandler):
     def get(self):       
         template = JINJA_ENVIRONMENT.get_template('eventList.jinja')
@@ -259,11 +202,7 @@ class submitWIVG(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('submit.jinja')
         self.response.out.write(template.render())
 
-class signout(webapp2.RequestHandler):
-    def get(self):
-        greeting = ('Go Away! (<a href="%s">sign out</a>)' %
-                    (users.create_logout_url('/Login')))
-        self.response.out.write("<html><body>%s</body></html>" % greeting)
+
 
 app = webapp2.WSGIApplication([
     ('/', TestDisplay),
@@ -278,29 +217,5 @@ app = webapp2.WSGIApplication([
     ('/questionPeriodsWIVG', questionPeriodsWIVG),
     ('/faqWIVG', faqWIVG),
     ('/rulesWIVG', rulesWIVG),
-    ('/submitWIVG', submitWIVG),
-    ('/submitIdea', idea.submitIdea),
-    ('/viewIdea', idea.viewIdea),
-    ('/generateSecurity', security.generateCode),
-    ('/redeemSecurity', security.redeemCode),
-    ('/signout', signout),
-    #BallMagick
-    ('/Save',BallMagick.SaveJsonData),
-    ('/LoadBall',BallMagick.loadBall),
-    ('/LoadJson',BallMagick.loadJson),
-    ('/LoadBackground',BallMagick.loadBackGround),
-    ('/Feminists',Feminists),
-    #BitCoin
-    #('/goechoemou2lewl17hoe5lu69eqoepi0thluqlakou5roaphi63rl5flegoeprl3',DogeCoinHandler.BitCoinReturn),
-    #('/RedeemBitcoin',DogeCoinHandler.BitCoinID_HoldPage),
-    #('/BitCoinAuth',DogeCoinHandler.BitCoinID),
-    #('/Profile', DogeCoinHandler.Profile),
-    #('/SubmitCause', DogeCoinHandler.CreateCause),
-    #('/SubmitCauseImage', DogeCoinHandler.SubmitCauseImage),
-    #('/CauseImage', DogeCoinHandler.CauseImage),
-    #('/ViewAllCauses', DogeCoinHandler.ViewAllCauses),
-    #('/CreateBaseCauses', DogeCoinHandler.CreateBaseCauses),
-    #('/EditCauses', DogeCoinHandler.EditCauses),
-    #('/SubmitCauseImageID', DogeCoinHandler.Submit_Cause_Image_ID),
-	
+    ('/submitWIVG', submitWIVG)
 ], debug=True)

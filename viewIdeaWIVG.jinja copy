@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<body>
+<form action="/submitIdea" method="post">
+    <input value = "{{name}}" name = "name">
+    <input value = "{{tagline}}" name = "tagline">
+    <input value = "{{genres}}" name = "genres">
+    <input value = "{{describe}}" name = "describe">
+    <input value = "{{original}}" name = "original">
+    <input value = "{{look}}" name = "look">
+    <input value = "{{who}}" name = "who">
+    <input value = "{{email}}" name = "email">
+    <input value = "{{additionalInfo}}" name = "additionalInfo">
+    <input type = "submit" value ="switch">
+
+
+</form>
+
+
+
+</body>
+</html>
+{% endautoescape %}

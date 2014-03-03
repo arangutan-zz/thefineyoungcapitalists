@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+</head>
+
+<body>
+
+Hello {{Name}} <br> <br>
+
+This will link a Instance of Bitcoins {{BTC}} or {{Price}} {{TypeOfMoney}} to your Google Account. <br>
+
+This linking is irrevocable and your email address will not be retained. Please retain this {{ID}} if you need support <br><br>
+
+<a href=/BitCoinAuth?id={{ID}}> Link</a> <br>
+
+If this is not the account you would like to link the Bitcoins to please follow this link 
+
+<a href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://www.google.com">Log Out and Log Back In</a>
+ 
+
+</body>
+{% endautoescape %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+</head>
+
+<body>
+<!--
+Hello {{Name}} <br> <br>
+Hello {{Description}} <br> <br>
+Hello {{BTCAdress}} <br> <br>
+Hello {{Youtube}} <br> <br>
+Hello {{HasYoutube}} <br> <br>
+Hello {{IsVisible}} <br> <br>
+-->
+
+<form action="/SubmitCause" method="post">
+    <input value = "{{Name}}" name = "Name">Name of the Cause<br>
+    <input value = "{{Description}}" name = "Description">Description of the cause<br>
+    <input value = "{{BTCAdress}}" name = "BTCAdress">Your BTC Address to send the your profits<br>
+    <input value = "{{Youtube}}" name = "Youtube">Youtube Link<br>
+	<br>
+<br>
+<br>
+    <input type = "submit" value ="switch">
+
+
+</form>
+
+
+
+
+
+</body>
+{% endautoescape %}
