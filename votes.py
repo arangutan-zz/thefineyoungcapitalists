@@ -27,9 +27,9 @@ from google.appengine.api import users
 import string
 import random
 import project
-
-
-
+import counter
+import Cookie
+import datetime
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -55,6 +55,14 @@ def VoteType_key(a_key=None):
 def Vote_key(a_key=None):
     return db.Key.from_path('CodeGenerator', a_key or 'default_key')
 
+class VoteEmpower(db.Model):
+   createDate = db.DateTimeProperty(auto_now_add = True)
+   email = db.StringProperty()
+   voteSelected = db.IntegerProperty()
+
+
+def VoteEmpower_key(a_key=None):
+    return db.Key.from_path('VoteEmpower', a_key or 'default_key')
 
 
 
@@ -93,7 +101,76 @@ class createVote(webapp2.RequestHandler):
                 if userLevel>0:
                     Vote(key=Vote_key("a"))
 
+class votingEmpowered(webapp2.RequestHandler):
+    def get(self):
+        template_values = {
+            "voteValue": 0
+        }
+        template = JINJA_ENVIRONMENT.get_template('main2.jinja')
+        self.response.out.write(template.render(template_values))
+
+class votingEmpoweredGrab(webapp2.RequestHandler):
+    def get(self):
+        value = int(self.request.get('id'))
+        cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
+        voteNumber = 0;
+        if cookie:
+            if "LastVote" in cookie:
+                if int(cookie["LastVote"].value) != 0:
+                    voteNumber = int(cookie["LastVote"].value);
+                    stringOfCounter = 'IdeaWIVG_' + str(value);
+                    stringOfCounterD = 'IdeaWIVG_' + str(voteNumber) + 'D';
+                    counter.increment(stringOfCounter)
+                    counter.increment(stringOfCounterD)
+                else:
+                    stringOfCounter = 'IdeaWIVG_' + str(value);
+                    counter.increment(stringOfCounter)
+            else:
+                stringOfCounter = 'IdeaWIVG_' + str(value);
+                counter.increment(stringOfCounter)
+        NameOfVoted = "";
+        if (value ==1):
+            NameOfVoted  = "My Eyes"
+        elif (value ==2):
+            NameOfVoted  = "Furball Fury"
+        elif (value ==3):
+            NameOfVoted  = "Lux"
+        elif (value ==4):
+            NameOfVoted  = "Air Rocky"
+        elif (value ==5):
+            NameOfVoted  =  "Afterlife Empire"
+        template = JINJA_ENVIRONMENT.get_template('WIVGVote.jinja')
+        template_values = {
+            "voteName": NameOfVoted,
+            "voteValue": value,
+            "Amount1":counter.get_count('IdeaWIVG_1')-counter.get_count('IdeaWIVG_1D'),
+            "Amount2":counter.get_count('IdeaWIVG_2')-counter.get_count('IdeaWIVG_2D'),
+            "Amount3":counter.get_count('IdeaWIVG_3')-counter.get_count('IdeaWIVG_3D'),
+            "Amount4":counter.get_count('IdeaWIVG_4')-counter.get_count('IdeaWIVG_4D'),
+            "Amount5":counter.get_count('IdeaWIVG_5')-counter.get_count('IdeaWIVG_5D'),
+        }
+        self.response.out.write(template.render(template_values))
 
 
+
+class votingEmpoweredGrabX(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user:
+            vote =  VoteEmpower.get(VoteEmpower_key(user.user_id()))
+            if (vote==None):
+                vote = VoteEmpower(key=VoteEmpower_key(user.user_id()))
+            vote.email=user.email();
+            vote.voteSelected=int(self.request.get('id'));
+            vote.put();
+            template_values = {
+                "voteValue": vote.voteSelected
+            }
+            template = JINJA_ENVIRONMENT.get_template('main2.jinja')
+            self.response.out.write(template.render(template_values))
+
+        else:
+            url = '/VoteEmpowered?id='+self.request.get('id')
+            self.response.out.write('''<meta http-equiv="refresh" content="0; url=%s" />''' % users.create_login_url(url));
 
 
